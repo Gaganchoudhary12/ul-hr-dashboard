@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 const Add = () => {
   const id = useSearchParams().get("id");
-  const [bannerData, setBannerData] = useState<IBanner>({});
+  const [bannerData, setBannerData] = useState({});
   useEffect(() => {
     id && getBannerData();
   }, []);
