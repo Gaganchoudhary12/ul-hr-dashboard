@@ -22,7 +22,7 @@ export default function RootLayout({
           <Providers>{children}</Providers>
         </div>
         <div className="md:hidden w-full h-screen flex justify-center items-center">
-          Not work in mobile
+          The application does not function on mobile platforms.
         </div>
       </body>
     </html>
