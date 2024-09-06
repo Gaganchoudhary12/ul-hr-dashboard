@@ -119,9 +119,9 @@ export default function QuestionTable({
                 <DropdownItem onClick={() => handleEdit(user._id)}>
                   Edit
                 </DropdownItem>
-                <DropdownItem onClick={() => handleDelete(user._id)}>
+{/*                 <DropdownItem onClick={() => handleDelete(user._id)}>
                   Delete
-                </DropdownItem>
+                </DropdownItem> */}
               </DropdownMenu>
             </Dropdown>
           </div>
