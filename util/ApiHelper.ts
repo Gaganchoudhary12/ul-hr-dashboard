@@ -15,7 +15,7 @@ export type ApiResponse<T> = {
     // const fullURL = `${baseUrl || process.env.}/${url}`;
   
     try {
-      const response = await fetch(`${'http://10.6.14.23:3000/'}${url}`, {
+      const response = await fetch(`${'https://ul-hr-dashboard-gwpz.vercel.app/'}${url}`, {
         headers: { ...headerOptions, 'Content-Type': 'application/json' },
         cache: 'no-store',
         ...restOptions,
