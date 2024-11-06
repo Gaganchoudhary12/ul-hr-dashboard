@@ -4,7 +4,7 @@ export function middleware(request: NextRequest) {
   const cookieStore = request.cookies;
   const isLogin = cookieStore.get('login');
 
-  if (!isLogin) {
+  if (false) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
