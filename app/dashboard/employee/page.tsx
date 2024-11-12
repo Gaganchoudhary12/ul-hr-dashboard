@@ -43,7 +43,7 @@ const User = () => {
       <Loader />
     </div>
   ) : (
-    <EmployeesTable employeesData={employeesData} handleEdit={handleEdit}/>
+    <EmployeesTable employeesData={employeesData} handleEdit={handleEdit} handleDelete={handleDelete}/>
   );
 };
 
