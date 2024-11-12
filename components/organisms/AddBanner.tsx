@@ -19,6 +19,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const types = [
   { key: "ANNIVERSARIES", label: "ANNIVERSARIES" },
+  { key: "BIRTHDAY", label: "BIRTHDAY" },
   { key: "TOWNHALL", label: "TOWNHALL" },
 ];
 
