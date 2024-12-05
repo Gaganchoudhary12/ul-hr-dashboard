@@ -65,6 +65,7 @@ const AddEmploy = () => {
           reportingManagerID: row[12] || "",
           dottedLineManager: row[13] || "",
           workerType: row[14] || "",
+          joiningDate: row[15] ? convertExcelDate(row[15]) : "",
         };
 
         // Remove empty keys
