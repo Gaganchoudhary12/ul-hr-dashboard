@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Button, Calendar, DateValue, Input } from "@nextui-org/react";
+import {
+  Button,
+  Calendar,
+  DateValue,
+  Input,
+  Textarea,
+} from "@nextui-org/react";
 import {
   today,
   getLocalTimeZone,
@@ -16,6 +22,8 @@ import { IEvents } from "@/util/Types";
 const AddEvents = () => {
   let [date, setDate] = useState<DateValue>(today(getLocalTimeZone()));
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
 
   const id = useSearchParams().get("id");
   const { push } = useRouter();
@@ -27,16 +35,19 @@ const AddEvents = () => {
     const data: ApiResponse<any> = await fetchData(`api/events?id=${id}`, {
       method: "GET",
     });
-    const { title, date } = data?.data;
+    const { title, date, description, image } = data?.data;
     setTitle(title);
     setDate(parseAbsoluteToLocal(date as any));
+    setDescription(description);
+    setImage(image);
   };
-
 
   const handleSubmit = async () => {
     const data: IEvents = {
       title,
       date: getFormateDateOfINtDate(date as any),
+      description,
+      image,
     };
     if (id) {
       data._id = id;
@@ -56,13 +67,29 @@ const AddEvents = () => {
     <>
       <div className="flex">
         <div className="w-1/2">
-          <Input
-            type="text"
-            label="Title"
-            placeholder="Enter event title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <div className="space-y-5">
+            <Input
+              type="text"
+              label="Title"
+              placeholder="Enter event title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <Textarea
+              type="text"
+              label="Description"
+              placeholder="Enter event description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <Input
+              type="url"
+              label="Image url*"
+              placeholder="Enter image url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </div>
         </div>
         <div className="w-1/2 flex justify-center">
           <Calendar
