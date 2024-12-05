@@ -32,6 +32,8 @@ export interface IEvents {
   _id?: string;
   title: string;
   date: Date;
+  image: string;
+  description: string;
 }
 
 export interface IFeedback {
