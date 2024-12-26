@@ -7,7 +7,12 @@ export async function GET(req: any): Promise<NextResponse> {
   try {
     const url = new URL(req.url);
     const email = new URLSearchParams(url.searchParams).get("email");
-
+ if (!email) {
+      return NextResponse.json(
+        { message: "Email is required" },
+        { status: 400 }
+      );
+    }
     await mongoose.connect(process.env.DB_URL as string);
     const [rating, ratingByManager] = await Promise.all([
       EmployeeOnboardings.aggregate([
