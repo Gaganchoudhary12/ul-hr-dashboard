@@ -6,7 +6,7 @@ import Ideas from "../../../lib/models/ideas";
 export async function GET(): Promise<NextResponse> {
   try {
     await mongoose.connect(process.env.DB_URL as string);
-    const ideas = await Ideas.find({}).sort({ date: -1 });
+    const ideas = await Ideas.find({}).sort({ date: -1 }).lean();
     return NextResponse.json(
       { data: ideas },
       {
